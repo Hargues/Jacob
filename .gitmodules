@@ -1,3 +1,6 @@
 [submodule "Dotfiles"]
 	path = Dotfiles
 	url = https://gitlab.com/barryboy/Dotfiles.git
+[submodule "RapidWebAppDev_Homework"]
+	path = RapidWebAppDev_Homework
+	url = https://gitlab.com/borbi.tibor/RapidWebAppDev_Homework.git
