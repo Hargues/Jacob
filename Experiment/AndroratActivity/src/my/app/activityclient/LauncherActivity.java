@@ -112,7 +112,7 @@ public class LauncherActivity extends ClientListener implements Controler, Surfa
         portfield =(EditText) findViewById(R.id.portfield);
         
         captureButton = (Button) findViewById(R.id.button_capture);
-        captureButton.setOnClickListener(this);
+        captureButton.setOnClickListener();
         
         //onStartCommand();
         
@@ -125,7 +125,7 @@ public class LauncherActivity extends ClientListener implements Controler, Surfa
     
     
     
-	public void onStartCommand() {
+	public void () {
 		Log.i(TAG, "In onCreate");
 		infos = new SystemInfo(this);
 		procCmd = new ProcessCommand(this);

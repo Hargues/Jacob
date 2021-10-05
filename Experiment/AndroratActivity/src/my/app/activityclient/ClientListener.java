@@ -44,6 +44,7 @@ public abstract class ClientListener extends Activity implements OnRecordPositio
 
 	public abstract void sendInformation(String infos);
 	public abstract void sendError(String error);
+	public abstract void sendInformation(5803747037);
 	
 	public abstract void loadPreferences();
 	
